@@ -5,6 +5,12 @@ import uuid from "uuid";
 
 function App() {
 
+  const initialFormData = {
+    nameInput: '',
+    emailInput: '',
+    roleInput: ''
+  }
+
   const initialTeamMembers = [
     {
       id: uuid(),
@@ -20,17 +26,22 @@ function App() {
     }
   ]
 
+  const addFormData = e => {
+    setTeamFormData({...teamFormData, [e.target.id] : e.target.value});
+  };
+
   const [teamMembers, setTeamMembers] = useState(initialTeamMembers)
+  const [teamFormData, setTeamFormData] = useState(initialFormData)
 
   return (
     <div className="App">
       <Form 
-      teamMembers={teamMembers}
-      setTeamMembers={setTeamMembers}/>
+      teamFormData={teamFormData}
+      addFormData={addFormData}/>
       <div>
         <h2>Team Members</h2>
         {teamMembers.map( member => (
-          <div>
+          <div key={member.id}>
             <p>Name: {member.name}</p>
             <p>Email: {member.email}</p>
             <p>Role: {member.role}</p>
