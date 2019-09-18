@@ -3,6 +3,13 @@ import Form from "./components/Form";
 import uuid from "uuid";
 import {initialTeamMembers, initialFormData} from "./default";
 import TeamMembers from './components/TeamMembers';
+import styled from 'styled-components';
+
+const StyledDiv = styled.div`
+  padding: 30px;
+  text-align: center;
+  background-color: whitesmoke;
+`;
 
 function App() {
 
@@ -21,17 +28,19 @@ function App() {
   const [memberToEdit, setMemberToEdit] = useState({});
 
   return (
-    <div className="App">
+    <StyledDiv>
+      <h2>Team Form</h2>
       <Form 
       teamFormData={teamFormData}
       addFormData={addFormData}
       addTeamMember={addTeamMember}
       memberToEdit={memberToEdit}
       setTeamFormData={setTeamFormData}/>
+      <h2>Team Members</h2>
       <TeamMembers 
       teamMembers={teamMembers}
       setMemberToEdit={setMemberToEdit}/>
-    </div>
+    </StyledDiv>
   );
 }
 

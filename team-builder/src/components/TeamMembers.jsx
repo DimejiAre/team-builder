@@ -1,12 +1,18 @@
 import React from 'react';
 import TeamMember from './TeamMember';
+import styled from 'styled-components';
+
+const StyledDiv = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+`;
 
 function TeamMembers (props){
     const {setMemberToEdit, teamMembers} = props;
 
     return (
-        <div>
-            <h2>Team Members</h2>
+        <StyledDiv>
             {teamMembers.map( member => (
             <TeamMember
             key={member.id} 
@@ -16,7 +22,7 @@ function TeamMembers (props){
             id={member.id}
             setMemberToEdit={setMemberToEdit}/>
             ))}
-        </div>  
+        </StyledDiv>  
     )
 }
 
