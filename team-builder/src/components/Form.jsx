@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const StyledForm = styled.form`
@@ -27,12 +27,7 @@ const StyledForm = styled.form`
 
 function Form(props){
 
-    const {teamFormData, addFormData, setTeamFormData, addTeamMember, memberToEdit} = props;
-    debugger
-
-    useEffect(()=>{
-        setTeamFormData(memberToEdit)
-    },[memberToEdit])
+    const {teamFormData, addFormData, addTeamMember, memberToEdit, editTeamMember} = props;
 
     return (
         <StyledForm>
@@ -42,7 +37,14 @@ function Form(props){
             <input value={teamFormData.email} onChange={addFormData} id='email' type='text' />
             <label htmlFor='role'>Role</label>
             <input value={teamFormData.role} onChange={addFormData} id='role' type='text' />
-            <button onClick={addTeamMember}>Submit</button>
+            <button onClick={e => {
+                debugger
+                if(memberToEdit){
+                    editTeamMember(e)
+                }else{
+                    addTeamMember(e)
+                }
+            }}>Submit</button>
         </StyledForm>
     )
 }

@@ -18,24 +18,42 @@ function App() {
   };
 
   const addTeamMember = e => {
+    debugger
     e.preventDefault();
     setTeamMembers([...teamMembers, {...teamFormData, id: uuid()}]);
     setTeamFormData(initialFormData)
   };
 
   const getMemberToEdit = (e, name, email, role, id) => {
-    e.preventDefault();
-    setMemberToEdit({
+    const member = {
       name: name,
       email: email,
       role: role,
       id: id
+    }
+    e.preventDefault();
+    setMemberToEdit(member)
+    setTeamFormData(member)
+  }
+
+  const editTeamMember = e => {
+    e.preventDefault();
+    const newTeam = teamMembers.map( member =>{
+      if(memberToEdit.id === member.id){
+        member.name = teamFormData.name;
+        member.email = teamFormData.email;
+        member.role = teamFormData.role;
+      }
+      return member
     })
+    setTeamFormData(initialFormData);
+    setMemberToEdit(null);
+    setTeamMembers(newTeam);
   }
 
   const [teamMembers, setTeamMembers] = useState(initialTeamMembers)
   const [teamFormData, setTeamFormData] = useState(initialFormData)
-  const [memberToEdit, setMemberToEdit] = useState({});
+  const [memberToEdit, setMemberToEdit] = useState(null);
 
   return (
     <StyledDiv>
@@ -45,7 +63,8 @@ function App() {
       addFormData={addFormData}
       addTeamMember={addTeamMember}
       memberToEdit={memberToEdit}
-      setTeamFormData={setTeamFormData}/>
+      setTeamFormData={setTeamFormData}
+      editTeamMember={editTeamMember}/>
       <h2>Team Members</h2>
       <TeamMembers 
       teamMembers={teamMembers}
