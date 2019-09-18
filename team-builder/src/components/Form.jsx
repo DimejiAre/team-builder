@@ -28,6 +28,7 @@ const StyledForm = styled.form`
 function Form(props){
 
     const {teamFormData, addFormData, setTeamFormData, addTeamMember, memberToEdit} = props;
+    debugger
 
     useEffect(()=>{
         setTeamFormData(memberToEdit)

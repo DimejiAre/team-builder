@@ -23,6 +23,16 @@ function App() {
     setTeamFormData(initialFormData)
   };
 
+  const getMemberToEdit = (e, name, email, role, id) => {
+    e.preventDefault();
+    setMemberToEdit({
+      name: name,
+      email: email,
+      role: role,
+      id: id
+    })
+  }
+
   const [teamMembers, setTeamMembers] = useState(initialTeamMembers)
   const [teamFormData, setTeamFormData] = useState(initialFormData)
   const [memberToEdit, setMemberToEdit] = useState({});
@@ -39,7 +49,7 @@ function App() {
       <h2>Team Members</h2>
       <TeamMembers 
       teamMembers={teamMembers}
-      setMemberToEdit={setMemberToEdit}/>
+      setMemberToEdit={getMemberToEdit}/>
     </StyledDiv>
   );
 }
