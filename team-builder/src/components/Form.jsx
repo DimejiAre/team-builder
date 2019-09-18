@@ -2,17 +2,17 @@ import React from 'react';
 
 function Form(props){
 
-    const {teamFormData, addFormData} = props;
+    const {teamFormData, addFormData, addTeamMember} = props;
 
     return (
         <form>
-            <label htmlFor='nameInput'>Name</label>
-            <input value={teamFormData.nameInput} onChange={addFormData} id='nameInput' type='text' />
+            <label htmlFor='name'>Name</label>
+            <input value={teamFormData.name} onChange={addFormData} id='name' type='text' />
             <label htmlFor='email'>Email</label>
-            <input value={teamFormData.emailInput} onChange={addFormData} id='emailInput' type='text' />
-            <label htmlFor='roleInput'>Role</label>
-            <input value={teamFormData.roleInput} onChange={addFormData} id='roleInput' type='text' />
-            <button onClick={e => e.preventDefault()}>Submit</button>
+            <input value={teamFormData.email} onChange={addFormData} id='email' type='text' />
+            <label htmlFor='role'>Role</label>
+            <input value={teamFormData.role} onChange={addFormData} id='role' type='text' />
+            <button onClick={addTeamMember}>Submit</button>
         </form>
     )
 }

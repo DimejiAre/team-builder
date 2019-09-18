@@ -6,9 +6,9 @@ import uuid from "uuid";
 function App() {
 
   const initialFormData = {
-    nameInput: '',
-    emailInput: '',
-    roleInput: ''
+    name: '',
+    email: '',
+    role: ''
   }
 
   const initialTeamMembers = [
@@ -30,6 +30,12 @@ function App() {
     setTeamFormData({...teamFormData, [e.target.id] : e.target.value});
   };
 
+  const addTeamMember = e => {
+    e.preventDefault();
+    setTeamMembers([...teamMembers, {...teamFormData, id: uuid()}]);
+    setTeamFormData(initialFormData)
+  };
+
   const [teamMembers, setTeamMembers] = useState(initialTeamMembers)
   const [teamFormData, setTeamFormData] = useState(initialFormData)
 
@@ -37,7 +43,8 @@ function App() {
     <div className="App">
       <Form 
       teamFormData={teamFormData}
-      addFormData={addFormData}/>
+      addFormData={addFormData}
+      addTeamMember={addTeamMember}/>
       <div>
         <h2>Team Members</h2>
         {teamMembers.map( member => (
