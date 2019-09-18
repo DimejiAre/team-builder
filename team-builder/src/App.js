@@ -18,15 +18,19 @@ function App() {
 
   const [teamMembers, setTeamMembers] = useState(initialTeamMembers)
   const [teamFormData, setTeamFormData] = useState(initialFormData)
+  const [memberToEdit, setMemberToEdit] = useState({});
 
   return (
     <div className="App">
       <Form 
       teamFormData={teamFormData}
       addFormData={addFormData}
-      addTeamMember={addTeamMember}/>
+      addTeamMember={addTeamMember}
+      memberToEdit={memberToEdit}
+      setTeamFormData={setTeamFormData}/>
       <TeamMembers 
-      teamMembers={teamMembers}/>
+      teamMembers={teamMembers}
+      setMemberToEdit={setMemberToEdit}/>
     </div>
   );
 }

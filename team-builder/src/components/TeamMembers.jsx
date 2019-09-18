@@ -1,7 +1,8 @@
 import React from 'react';
 import TeamMember from './TeamMember';
 
-function TeamMembers ({teamMembers}){
+function TeamMembers (props){
+    const {setMemberToEdit, teamMembers} = props;
 
     return (
         <div>
@@ -11,7 +12,9 @@ function TeamMembers ({teamMembers}){
             key={member.id} 
             name={member.name}
             email={member.email}
-            role={member.role}/>
+            role={member.role}
+            id={member.id}
+            setMemberToEdit={setMemberToEdit}/>
             ))}
         </div>  
     )

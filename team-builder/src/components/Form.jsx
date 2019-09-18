@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 function Form(props){
 
-    const {teamFormData, addFormData, addTeamMember} = props;
+    const {teamFormData, addFormData, setTeamFormData, addTeamMember, memberToEdit} = props;
+
+    useEffect(()=>{
+        setTeamFormData(memberToEdit)
+    },[memberToEdit])
 
     return (
         <form>
